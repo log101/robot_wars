@@ -27,3 +27,4 @@ Yarışmaya katılabilcek robotların en az 3 adet özel yeteğeni olmalı ve he
 - Robotların özellerikleri tanımlanırken "methotlar" kullanılacak (foknsiyonlar değil).
 - Robotlar in-memory map olarak hafızada tutlacak ( map kullanılacak ).
 - Log akışları sırasında time.Sleep ile log akışı yavaşlatılırsa daha gerçekci olacaktır.
+- Yazılım ilk başladığında nasıl çalıştığını kullanıcın neler yapabileceğini anlatan bir çıktıyı ekranda göstermelidir.
