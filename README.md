@@ -1,7 +1,7 @@
 
 # Robot Yarışı
 
-Yarışmaya katılabilcek robotların en az 3 adet özel yeteğeni olmalı ve her yeteneğin belirli sınırlarda düşmana hasar verme oranı bulunmalıdır. Yarışmalar kura usülüyle oluşturulacak karma bir ligde yapılmalıdır. Yarışma sırasında hamleler sırayla yapılmalı ve her robotun hamlesi anlık olarak Random seçilmelidir. Başlangıçta sistem tarafında tanımlı en az 10 adet robot bulunmalı ve kullanıcı tarfından yeni robotlar konsoldan eklenebilmelidir. Her yarışmanın sonucu adım adım ekranda gösterilmeli her aşama için kullanıcıya bilgi verilmelidir. Yarışma sonucunda kazanan robot ilan edilmelidir.
+Yarışmaya katılabilecek robotların en az 3 adet özel yeteneği olmalı ve her yeteneğin belirli sınırlarda düşmana hasar verme oranı bulunmalıdır. Yarışmalar kura usülüyle oluşturulacak karma bir ligde yapılmalıdır. Yarışma sırasında hamleler sırayla yapılmalı ve her robotun hamlesi anlık olarak Random seçilmelidir. Başlangıçta sistem tarafında tanımlı en az 10 adet robot bulunmalı ve kullanıcı tarfından yeni robotlar konsoldan eklenebilmelidir. Her yarışmanın sonucu adım adım ekranda gösterilmeli her aşama için kullanıcıya bilgi verilmelidir. Yarışma sonucunda kazanan robot ilan edilmelidir.
 
 ## Yapılacaklar
 
@@ -24,7 +24,7 @@ Yarışmaya katılabilcek robotların en az 3 adet özel yeteğeni olmalı ve he
 ## Notlar
 
 - Robot tanımlamalarında Struct kullanılacak.
-- Robotların özellerikleri tanımlanırken "methotlar" kullanılacak (foknsiyonlar değil).
-- Robotlar in-memory map olarak hafızada tutlacak ( map kullanılacak ).
+- Robotların özellikleri tanımlanırken "methodlar" kullanılacak (foknsiyonlar değil).
+- Robotlar in-memory map olarak hafızada tutulacak ( map kullanılacak ).
 - Log akışları sırasında time.Sleep ile log akışı yavaşlatılırsa daha gerçekci olacaktır.
 - Yazılım ilk başladığında nasıl çalıştığını kullanıcın neler yapabileceğini anlatan bir çıktıyı ekranda göstermelidir.

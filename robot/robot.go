@@ -9,11 +9,24 @@ type Skill struct {
 }
 
 // METHODS
-func (r *Robot) Act(skill Skill, target *Robot) {
-	target.health += skill.hpEffect
+func (s *Skill) Act(target *Robot) {
+	target.health += s.hpEffect
 }
 
-// GETTERS & SETTERS
+// GETTERS
+func (s *Skill) GetName() string {
+	return s.name
+}
+
+func (s *Skill) GetHpEffect() int {
+	return s.hpEffect
+}
+
+func (s *Skill) GetCritChance() int {
+	return s.critChance
+}
+
+// SETTERS
 func (s *Skill) SetName(name string) {
 	s.name = name
 }
@@ -28,7 +41,9 @@ func (s *Skill) SetCritChance(chance int) {
 
 // ***********
 // TYPE: ROBOT
+type RobotId int
 type Robot struct {
+	id     RobotId
 	name   string
 	health int
 	skill1 Skill
@@ -36,7 +51,36 @@ type Robot struct {
 	skill3 Skill
 }
 
-// GETTERS & SETTERS
+// GETTERS
+func (r *Robot) GetId() RobotId {
+	return r.id
+}
+
+func (r *Robot) GetName() string {
+	return r.name
+}
+
+func (r *Robot) GetHealth() int {
+	return r.health
+}
+
+func (r *Robot) GetSkill1() Skill {
+	return r.skill1
+}
+
+func (r *Robot) GetSkill2() Skill {
+	return r.skill2
+}
+
+func (r *Robot) GetSkill3() Skill {
+	return r.skill3
+}
+
+// SETTERS
+func (r *Robot) SetId(id RobotId) {
+	r.id = id
+}
+
 func (r *Robot) SetName(name string) {
 	r.name = name
 }
