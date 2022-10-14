@@ -153,6 +153,17 @@ var Jet = Robot{
 	skill3: LesserHeal,
 }
 
-var StarterRobots [10]Robot = [10]Robot{Jet, Anolator, Mecha, Umx, Boomer, Skip, Oza, Iyuoid, Imotron, Tera}
+var StarterRobots map[RobotId]Robot = map[RobotId]Robot{
+	Jet.id:      Jet,
+	Anolator.id: Anolator,
+	Mecha.id:    Mecha,
+	Umx.id:      Umx,
+	Boomer.id:   Boomer,
+	Skip.id:     Skip,
+	Oza.id:      Oza,
+	Iyuoid.id:   Iyuoid,
+	Imotron.id:  Imotron,
+	Tera.id:     Tera,
+}
 
 var StarterSkills [10]Skill = [10]Skill{Strike, Slam, Purge, LesserHeal, GreaterHeal, Splint, Destruction, Immobilize, Slice, Rampage}
