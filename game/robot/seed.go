@@ -20,14 +20,14 @@ var Purge = Skill{
 	critChance: 30,
 }
 
-var LesserHeal = Skill{
-	name:       "lesser heal",
+var LesserFire = Skill{
+	name:       "lesser fire",
 	hpEffect:   20,
 	critChance: 0,
 }
 
-var GreaterHeal = Skill{
-	name:       "greater heal",
+var GreaterFire = Skill{
+	name:       "greater fire",
 	hpEffect:   50,
 	critChance: 0,
 }
@@ -78,7 +78,7 @@ var Imotron = Robot{
 	health: 100,
 	skill1: Strike,
 	skill2: Slam,
-	skill3: LesserHeal,
+	skill3: LesserFire,
 }
 
 var Iyuoid = Robot{
@@ -87,7 +87,7 @@ var Iyuoid = Robot{
 	health: 100,
 	skill1: Destruction,
 	skill2: Immobilize,
-	skill3: GreaterHeal,
+	skill3: GreaterFire,
 }
 
 var Oza = Robot{
@@ -105,7 +105,7 @@ var Skip = Robot{
 	health: 100,
 	skill1: Destruction,
 	skill2: Splint,
-	skill3: LesserHeal,
+	skill3: LesserFire,
 }
 
 var Boomer = Robot{
@@ -114,14 +114,14 @@ var Boomer = Robot{
 	health: 100,
 	skill1: Purge,
 	skill2: Splint,
-	skill3: LesserHeal,
+	skill3: LesserFire,
 }
 
 var Umx = Robot{
 	id:     7,
 	name:   "Umx",
 	health: 100,
-	skill1: LesserHeal,
+	skill1: LesserFire,
 	skill2: Strike,
 	skill3: Immobilize,
 }
@@ -132,7 +132,7 @@ var Mecha = Robot{
 	health: 100,
 	skill1: Rampage,
 	skill2: Slam,
-	skill3: LesserHeal,
+	skill3: LesserFire,
 }
 
 var Anolator = Robot{
@@ -141,7 +141,7 @@ var Anolator = Robot{
 	health: 100,
 	skill1: Destruction,
 	skill2: Slam,
-	skill3: GreaterHeal,
+	skill3: GreaterFire,
 }
 
 var Jet = Robot{
@@ -150,7 +150,7 @@ var Jet = Robot{
 	health: 100,
 	skill1: Splint,
 	skill2: Strike,
-	skill3: LesserHeal,
+	skill3: LesserFire,
 }
 
 var StarterRobots map[RobotId]Robot = map[RobotId]Robot{
@@ -173,4 +173,4 @@ var StarterRobotsSample map[RobotId]Robot = map[RobotId]Robot{
 	Tera.id:    Tera,
 }
 
-var StarterSkills [10]Skill = [10]Skill{Strike, Slam, Purge, LesserHeal, GreaterHeal, Splint, Destruction, Immobilize, Slice, Rampage}
+var StarterSkills [10]Skill = [10]Skill{Strike, Slam, Purge, LesserFire, GreaterFire, Splint, Destruction, Immobilize, Slice, Rampage}
