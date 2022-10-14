@@ -73,7 +73,7 @@ var Tera = Robot{
 }
 
 var Imotron = Robot{
-	id:     1,
+	id:     2,
 	name:   "Imotron",
 	health: 100,
 	skill1: Strike,
@@ -82,7 +82,7 @@ var Imotron = Robot{
 }
 
 var Iyuoid = Robot{
-	id:     1,
+	id:     3,
 	name:   "Iyuoid",
 	health: 100,
 	skill1: Destruction,
@@ -91,7 +91,7 @@ var Iyuoid = Robot{
 }
 
 var Oza = Robot{
-	id:     1,
+	id:     4,
 	name:   "Oza",
 	health: 100,
 	skill1: Splint,
@@ -100,7 +100,7 @@ var Oza = Robot{
 }
 
 var Skip = Robot{
-	id:     1,
+	id:     5,
 	name:   "Skip",
 	health: 100,
 	skill1: Destruction,
@@ -109,7 +109,7 @@ var Skip = Robot{
 }
 
 var Boomer = Robot{
-	id:     1,
+	id:     6,
 	name:   "Boomer",
 	health: 100,
 	skill1: Purge,
@@ -118,7 +118,7 @@ var Boomer = Robot{
 }
 
 var Umx = Robot{
-	id:     1,
+	id:     7,
 	name:   "Umx",
 	health: 100,
 	skill1: LesserHeal,
@@ -127,7 +127,7 @@ var Umx = Robot{
 }
 
 var Mecha = Robot{
-	id:     1,
+	id:     8,
 	name:   "Mecha",
 	health: 100,
 	skill1: Rampage,
@@ -136,7 +136,7 @@ var Mecha = Robot{
 }
 
 var Anolator = Robot{
-	id:     1,
+	id:     9,
 	name:   "Anolator",
 	health: 100,
 	skill1: Destruction,
@@ -145,7 +145,7 @@ var Anolator = Robot{
 }
 
 var Jet = Robot{
-	id:     1,
+	id:     10,
 	name:   "Jet",
 	health: 100,
 	skill1: Splint,
@@ -164,6 +164,13 @@ var StarterRobots map[RobotId]Robot = map[RobotId]Robot{
 	Iyuoid.id:   Iyuoid,
 	Imotron.id:  Imotron,
 	Tera.id:     Tera,
+}
+
+var StarterRobotsSample map[RobotId]Robot = map[RobotId]Robot{
+	Oza.id:     Oza,
+	Iyuoid.id:  Iyuoid,
+	Imotron.id: Imotron,
+	Tera.id:    Tera,
 }
 
 var StarterSkills [10]Skill = [10]Skill{Strike, Slam, Purge, LesserHeal, GreaterHeal, Splint, Destruction, Immobilize, Slice, Rampage}

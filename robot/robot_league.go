@@ -42,17 +42,19 @@ func (r *RobotLeague) PopulateMatches() error {
 	} else if len(r.players) < 2 {
 		return errors.New("number of teams should be more than 2")
 	} else {
-		for i1, k1 := range r.players {
-			for i2, k2 := range r.players {
-				matchId := pairingFunction(i1, i2)
+		for i1, _ := range r.players {
+			for i2, _ := range r.players {
+				matchId := pairingFunction(
+					RobotId(math.Min(float64(i1), float64(i2))),
+					RobotId(math.Max(float64(i1), float64(i2))))
 				_, ok := r.matches[matchId]
 				if i1 == i2 || ok {
 					continue
 				}
 
 				r.matches[matchId] = MatchResult{
-					teamA: k1.id,
-					teamB: k2.id,
+					teamA: RobotId(math.Min(float64(i1), float64(i2))),
+					teamB: RobotId(math.Max(float64(i1), float64(i2))),
 					done:  statusNotPlayed,
 				}
 			}
