@@ -28,3 +28,12 @@ Yarışmaya katılabilecek robotların en az 3 adet özel yeteneği olmalı ve h
 - Robotlar in-memory map olarak hafızada tutulacak ( map kullanılacak ).
 - Log akışları sırasında time.Sleep ile log akışı yavaşlatılırsa daha gerçekci olacaktır.
 - Yazılım ilk başladığında nasıl çalıştığını kullanıcın neler yapabileceğini anlatan bir çıktıyı ekranda göstermelidir.
+
+
+## Yapılacaklar
+- [x] Robot ve yetenek yapılarını oluştur
+- [x] Örnek 10 tane robot ve yetenek oluştur
+- [x] Lig yapısını oluştur
+- [x] Lig metodlarını yaz
+- [ ] Oyun yapısını oluştur
+- [ ] Oyun metodlarını yaz
