@@ -1,16 +1,13 @@
 package robot
 
+import "strconv"
+
 // ***********
 // TYPE: SKILL
 type Skill struct {
 	name       string
 	hpEffect   int
 	critChance int
-}
-
-// METHODS
-func (s *Skill) Act(target *Robot) {
-	target.health += s.hpEffect
 }
 
 // GETTERS
@@ -46,9 +43,18 @@ type Robot struct {
 	id     RobotId
 	name   string
 	health int
-	skill1 Skill
-	skill2 Skill
-	skill3 Skill
+	skills [3]Skill
+}
+
+// METHODS
+func GetRobotById(r RobotId, robots map[RobotId]*Robot) *Robot {
+	robot := robots[r]
+	return robot
+}
+
+func (r *Robot) Attact(skillIndex int, target *Robot) {
+	effect := r.skills[skillIndex].hpEffect
+	target.health += effect
 }
 
 // GETTERS
@@ -64,16 +70,12 @@ func (r *Robot) GetHealth() int {
 	return r.health
 }
 
-func (r *Robot) GetSkill1() Skill {
-	return r.skill1
+func (r *Robot) GetSkill(i int) Skill {
+	return r.skills[i]
 }
 
-func (r *Robot) GetSkill2() Skill {
-	return r.skill2
-}
-
-func (r *Robot) GetSkill3() Skill {
-	return r.skill3
+func (r *Robot) GetSkillFeatures(i int) string {
+	return r.skills[i].name + " " + strconv.FormatInt(-int64(r.skills[i].hpEffect), 10)
 }
 
 // SETTERS
@@ -89,14 +91,6 @@ func (r *Robot) SetHealth(health int) {
 	r.health = health
 }
 
-func (r *Robot) SetSkill1(skill Skill) {
-	r.skill1 = skill
-}
-
-func (r *Robot) SetSkill2(skill Skill) {
-	r.skill2 = skill
-}
-
-func (r *Robot) SetSkill3(skill Skill) {
-	r.skill3 = skill
+func (r *Robot) SetSkill(i int, skill Skill) {
+	r.skills[i] = skill
 }

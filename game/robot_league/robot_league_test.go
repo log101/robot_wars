@@ -9,18 +9,18 @@ import (
 )
 
 func TestRobotLeague_League(t *testing.T) {
-	sampleMatches := make(map[MatchId]MatchResult)
+	sampleMatches := make(map[MatchId]*MatchResult)
 
 	sampleLeague := RobotLeague{
 		players: robot.StarterRobotsSample,
-		matches: sampleMatches,
+		Matches: sampleMatches,
 	}
 
 	sampleLeague.PopulateMatches()
 
 	t.Run("number of matches are correct", func(t *testing.T) {
 		playerCount := len(sampleLeague.players)
-		if len(sampleLeague.matches) != (playerCount*(playerCount-1))/2 {
+		if len(sampleLeague.Matches) != (playerCount*(playerCount-1))/2 {
 			t.Error("number of matches are incorrectly calculated")
 		}
 	})
@@ -38,46 +38,52 @@ func TestRobotLeague_League(t *testing.T) {
 
 		expectedMatches := map[MatchId]MatchResult{
 			correctPairs[0]: {
-				teamA: 1,
-				teamB: 2,
-				done:  statusNotPlayed,
+				teamA:  1,
+				teamB:  2,
+				status: StatusNotPlayed,
 			},
 			correctPairs[1]: {
-				teamA: 1,
-				teamB: 3,
-				done:  statusNotPlayed,
+				teamA:  1,
+				teamB:  3,
+				status: StatusNotPlayed,
 			},
 			correctPairs[2]: {
-				teamA: 1,
-				teamB: 4,
-				done:  statusNotPlayed,
+				teamA:  1,
+				teamB:  4,
+				status: StatusNotPlayed,
 			},
 			correctPairs[3]: {
-				teamA: 2,
-				teamB: 3,
-				done:  statusNotPlayed,
+				teamA:  2,
+				teamB:  3,
+				status: StatusNotPlayed,
 			},
 			correctPairs[4]: {
-				teamA: 2,
-				teamB: 4,
-				done:  statusNotPlayed,
+				teamA:  2,
+				teamB:  4,
+				status: StatusNotPlayed,
 			},
 			correctPairs[5]: {
-				teamA: 3,
-				teamB: 4,
-				done:  statusNotPlayed,
+				teamA:  3,
+				teamB:  4,
+				status: StatusNotPlayed,
 			},
 		}
 
-		if !maps.Equal(expectedMatches, sampleLeague.matches) {
+		leagueMap := make(map[MatchId]MatchResult)
+
+		for k, v := range sampleLeague.Matches {
+			leagueMap[k] = *v
+		}
+
+		if !maps.Equal(expectedMatches, leagueMap) {
 			t.Log(expectedMatches)
-			t.Log(sampleLeague.matches)
+			t.Log(sampleLeague.Matches)
 			t.Error("everyone is not matched")
 		}
 	})
 
 	t.Run("ended returns false when league is not finished", func(t *testing.T) {
-		got := sampleLeague.ended()
+		got := sampleLeague.Ended()
 
 		expected := false
 
@@ -93,33 +99,33 @@ func TestRobotLeague_League(t *testing.T) {
 			3: sampleLeague.players[3],
 		}
 
-		sampleMatches := map[MatchId]MatchResult{
+		sampleMatches := map[MatchId]*MatchResult{
 			pairingFunction(1, 2): {
 				teamA:  1,
 				teamB:  2,
-				done:   statusPlayed,
+				status: StatusPlayed,
 				winner: 1,
 			},
 			pairingFunction(1, 3): {
 				teamA:  1,
 				teamB:  3,
-				done:   statusPlayed,
+				status: StatusPlayed,
 				winner: 1,
 			},
 			pairingFunction(2, 3): {
 				teamA:  2,
 				teamB:  3,
-				done:   statusPlayed,
+				status: StatusPlayed,
 				winner: 2,
 			},
 		}
 
 		finishedLeague := RobotLeague{
 			players: samplePlayers,
-			matches: sampleMatches,
+			Matches: sampleMatches,
 		}
 
-		got := finishedLeague.ended()
+		got := finishedLeague.Ended()
 
 		expected := true
 
@@ -140,17 +146,17 @@ func TestRobotLeague_League(t *testing.T) {
 	})
 
 	t.Run("league matches' getters and setters are working", func(t *testing.T) {
-		expectedMatches := map[MatchId]MatchResult{
+		expectedMatches := map[MatchId]*MatchResult{
 			1: {
 				teamA:  1,
 				teamB:  2,
-				done:   statusNotPlayed,
+				status: StatusNotPlayed,
 				winner: 1,
 			},
 			2: {
 				teamA:  3,
 				teamB:  4,
-				done:   statusPlayed,
+				status: StatusPlayed,
 				winner: 3,
 			},
 		}
@@ -168,22 +174,22 @@ func TestRobotLeague_League(t *testing.T) {
 
 func TestRobotLeague_MatchResult(t *testing.T) {
 	sampleMatchResult := MatchResult{
-		teamA: 1,
-		teamB: 2,
-		done:  statusNotPlayed,
+		teamA:  1,
+		teamB:  2,
+		status: StatusNotPlayed,
 	}
 
 	t.Run("setters and getters are working", func(t *testing.T) {
-		expectedDone := statusPlayed
-		sampleMatchResult.SetDone()
-		gotDone := sampleMatchResult.GetDone()
+		expectedDone := StatusPlayed
+		sampleMatchResult.SetStatus(StatusPlayed)
+		gotDone := sampleMatchResult.GetStatus()
 
 		if expectedDone != gotDone {
 			t.Error("error while setting or getting match result done")
 		}
 
 		expectedWinner := robot.RobotId(1)
-		sampleMatchResult.SetDone()
+		sampleMatchResult.SetStatus(StatusPlayed)
 		sampleMatchResult.SetWinner(expectedWinner)
 
 		gotWinner := sampleMatchResult.GetWinner()
