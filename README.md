@@ -11,7 +11,7 @@ Yarışmaya katılabilecek robotların en az 3 adet özel yeteneği olmalı ve h
 - [x] Kullanıcı isterse konsoldan kendi robotunu tanımlayabilecektir.
 - [x] Kullanıcı komut verdiğinde karma bir lig oluşturulacak kullanıcıya sonuclar gösterilecektir. Kullanıcı isterse ligi yeniden oluşturabilecektir.
 - [x] Kullanıcı başlat komutu verdiğinde oluşan lig de yarışmalar başlatılacak karşılıklı robotlar dövüştürülecek ve sonuçları adım adım ekranda yazılacaktır.
-- [ ] Dövüş esnasında Robotlar hamleleri karşılıklı olarak sırayla yapacaktır. Her hamleden sonra Robotların hangi hamleyi yaptığı kalan güç durumları vs.. tek tek loglanarak ekranda gösterilecektir.
+- [x] Dövüş esnasında Robotlar hamleleri karşılıklı olarak sırayla yapacaktır. Her hamleden sonra Robotların hangi hamleyi yaptığı kalan güç durumları vs.. tek tek loglanarak ekranda gösterilecektir.
 
 
 ## Çalışma Prensibi
