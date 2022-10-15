@@ -26,5 +26,5 @@ Yarışmaya katılabilecek robotların en az 3 adet özel yeteneği olmalı ve h
 - [x] Robot tanımlamalarında Struct kullanılacak.
 - [x] Robotların özellikleri tanımlanırken "methodlar" kullanılacak (foknsiyonlar değil).
 - [x] Robotlar in-memory map olarak hafızada tutulacak ( map kullanılacak ).
-- [ ] Log akışları sırasında time.Sleep ile log akışı yavaşlatılırsa daha gerçekci olacaktır.
+- [x] Log akışları sırasında time.Sleep ile log akışı yavaşlatılırsa daha gerçekci olacaktır.
 - [x] Yazılım ilk başladığında nasıl çalıştığını kullanıcın neler yapabileceğini anlatan bir çıktıyı ekranda göstermelidir.
