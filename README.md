@@ -6,7 +6,7 @@ Yarışmaya katılabilecek robotların en az 3 adet özel yeteneği olmalı ve h
 ## Yapılacaklar
 
 - [x] Varsayılan olarak en az 10 adet Robot sisteme yazılım aşamasında tanımlanacak
-- [ ] Yazılım başladığında kullanıcıya her robotun tüm özellikleri tek tek rapor edilecek
+- [x] Yazılım başladığında kullanıcıya her robotun tüm özellikleri tek tek rapor edilecek
 - [ ] Kullanıcı isterse konsoldan (ftm.Scan...) gireceği komutlarla çalışma anında default robotların bilgilerini düzenleyebilecektir.
 - [ ] Kullanıcı isterse konsoldan kendi robotunu tanımlayabilecektir.
 - [ ] Kullanıcı komut verdiğinde karma bir lig oluşturulacak kullanıcıya sonuclar gösterilecektir. Kullanıcı isterse ligi yeniden oluşturabilecektir.
