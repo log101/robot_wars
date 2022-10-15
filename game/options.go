@@ -35,7 +35,11 @@ func askOptions(ops options) GameState {
 
 var displayHelpMessage option = option{
 	operation: func() GameState {
-		fmt.Println("go run .")
+		fmt.Println(`
+		This is a randomly generated robot figthing game, please select the option you prefer!
+		You can add new robots or modify the existing ones!
+		Have fun!
+		`)
 		return stateWaiting
 	},
 	description: "display help message",
@@ -101,21 +105,83 @@ func configureRobot(r *robot.Robot) {
 		},
 		option{
 			operation: func() GameState {
+				for i, k := range robot.StarterSkills {
+					fmt.Println(i+1, ")", k.GetName(), " power:", -k.GetHpEffect())
+				}
+				fmt.Println("###################")
+				fmt.Println("select a skill from the list")
+
+				var selection int
+				fmt.Scanf("%d", &selection)
+
+				r.SetSkill(0, robot.StarterSkills[selection-1])
+				fmt.Println("skill successfully changed!")
+
 				return stateWaiting
 			},
 			description: "change first skill",
 		},
 		option{
 			operation: func() GameState {
+				for i, k := range robot.StarterSkills {
+					fmt.Println(i+1, ")", k.GetName(), " power:", -k.GetHpEffect())
+				}
+				fmt.Println("###################")
+				fmt.Println("select a skill from the list")
+
+				var selection int
+				fmt.Scanf("%d", &selection)
+
+				r.SetSkill(1, robot.StarterSkills[selection-1])
+				fmt.Println("skill successfully changed!")
+
 				return stateWaiting
 			},
 			description: "change second skill",
 		},
 		option{
 			operation: func() GameState {
+				for i, k := range robot.StarterSkills {
+					fmt.Println(i+1, ")", k.GetName(), " power:", -k.GetHpEffect())
+				}
+				fmt.Println("###################")
+				fmt.Println("select a skill from the list")
+
+				var selection int
+				fmt.Scanf("%d", &selection)
+
+				r.SetSkill(2, robot.StarterSkills[selection-1])
+				fmt.Println("skill successfully changed!")
+
 				return stateWaiting
 			},
 			description: "change third skill",
 		},
 	})
+}
+
+func addRobot(p league.Players) {
+	var (
+		name   string
+		skills [3]robot.Skill
+	)
+
+	fmt.Println("enter a name for the robot!")
+	fmt.Scanf("%s", &name)
+
+	for i := 0; i < 3; i++ {
+		var selection int
+		fmt.Println("choose a skill from the set")
+		for k, v := range robot.StarterSkills {
+			fmt.Println(k+1, ")", v.GetName(), "power:", v.GetHpEffect())
+		}
+		fmt.Scanf("%d", &selection)
+		skills[i] = robot.StarterSkills[selection-1]
+		fmt.Println("skill successfully added")
+	}
+
+	newRobot := robot.CreateRobot(robot.RobotId(len(p)+1), name, 100, skills)
+	p[newRobot.GetId()] = newRobot
+
+	fmt.Println("robot", newRobot.GetName(), "successfully created")
 }

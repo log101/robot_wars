@@ -37,3 +37,24 @@ func TestAttact(t *testing.T) {
 		}
 	})
 }
+
+func TestSetSkill(t *testing.T) {
+	t.Run("can change robot's skillset", func(t *testing.T) {
+		newSkill := Skill{
+			name:     "sample",
+			hpEffect: 10,
+		}
+
+		robot1 := StarterRobots[RobotId(1)]
+		robot1.SetSkill(0, newSkill)
+
+		got := robot1.skills[0]
+		expected := newSkill
+
+		if got != expected {
+			t.Log(expected)
+			t.Log(got)
+			t.Error("cant change robot skill")
+		}
+	})
+}

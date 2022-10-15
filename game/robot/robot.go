@@ -5,9 +5,8 @@ import "strconv"
 // ***********
 // TYPE: SKILL
 type Skill struct {
-	name       string
-	hpEffect   int
-	critChance int
+	name     string
+	hpEffect int
 }
 
 // GETTERS
@@ -19,10 +18,6 @@ func (s *Skill) GetHpEffect() int {
 	return s.hpEffect
 }
 
-func (s *Skill) GetCritChance() int {
-	return s.critChance
-}
-
 // SETTERS
 func (s *Skill) SetName(name string) {
 	s.name = name
@@ -30,10 +25,6 @@ func (s *Skill) SetName(name string) {
 
 func (s *Skill) SetHpEffect(effect int) {
 	s.hpEffect = effect
-}
-
-func (s *Skill) SetCritChance(chance int) {
-	s.critChance = chance
 }
 
 // ***********
@@ -47,14 +38,25 @@ type Robot struct {
 }
 
 // METHODS
+func (r *Robot) Attact(skillIndex int, target *Robot) {
+	effect := r.skills[skillIndex].hpEffect
+	target.health += effect
+}
+
 func GetRobotById(r RobotId, robots map[RobotId]*Robot) *Robot {
 	robot := robots[r]
 	return robot
 }
 
-func (r *Robot) Attact(skillIndex int, target *Robot) {
-	effect := r.skills[skillIndex].hpEffect
-	target.health += effect
+func CreateRobot(id RobotId, name string, health int, skills [3]Skill) *Robot {
+	newRobot := Robot{
+		id:     id,
+		name:   name,
+		health: health,
+		skills: skills,
+	}
+
+	return &newRobot
 }
 
 // GETTERS
