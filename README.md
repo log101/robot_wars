@@ -7,7 +7,7 @@ Yarışmaya katılabilecek robotların en az 3 adet özel yeteneği olmalı ve h
 
 - [x] Varsayılan olarak en az 10 adet Robot sisteme yazılım aşamasında tanımlanacak
 - [x] Yazılım başladığında kullanıcıya her robotun tüm özellikleri tek tek rapor edilecek
-- [ ] Kullanıcı isterse konsoldan (ftm.Scan...) gireceği komutlarla çalışma anında default robotların bilgilerini düzenleyebilecektir.
+- [x] Kullanıcı isterse konsoldan (ftm.Scan...) gireceği komutlarla çalışma anında default robotların bilgilerini düzenleyebilecektir.
 - [ ] Kullanıcı isterse konsoldan kendi robotunu tanımlayabilecektir.
 - [ ] Kullanıcı komut verdiğinde karma bir lig oluşturulacak kullanıcıya sonuclar gösterilecektir. Kullanıcı isterse ligi yeniden oluşturabilecektir.
 - [ ] Kullanıcı başlat komutu verdiğinde oluşan lig de yarışmalar başlatılacak karşılıklı robotlar dövüştürülecek ve sonuçları adım adım ekranda yazılacaktır.
