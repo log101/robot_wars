@@ -1,3 +1,4 @@
+// Başlangıç yetenekleri ve robotları burada tanımlı
 package robot
 
 // SEED DATA
@@ -123,6 +124,9 @@ var Jet = Robot{
 	skills: [3]Skill{Splint, Strike, LesserFire},
 }
 
+// Proje gereklilikleri doğrultusunda Map içerisinde tanımlanan robotlar
+// Key için ID'lerini kullanıyoruz, yer kaplamamak adına robotların
+// işaretçisini tutuyoruz
 var StarterRobots map[RobotId]*Robot = map[RobotId]*Robot{
 	Jet.id:      &Jet,
 	Anolator.id: &Anolator,
@@ -136,6 +140,7 @@ var StarterRobots map[RobotId]*Robot = map[RobotId]*Robot{
 	Tera.id:     &Tera,
 }
 
+// Testler için 4 robotluk bir map
 var StarterRobotsSample map[RobotId]*Robot = map[RobotId]*Robot{
 	Oza.id:     &Oza,
 	Iyuoid.id:  &Iyuoid,
@@ -143,4 +148,5 @@ var StarterRobotsSample map[RobotId]*Robot = map[RobotId]*Robot{
 	Tera.id:    &Tera,
 }
 
+// Başlangıç yetenekleri
 var StarterSkills [10]Skill = [10]Skill{Strike, Slam, Purge, LesserFire, GreaterFire, Splint, Destruction, Immobilize, Slice, Rampage}

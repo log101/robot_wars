@@ -38,16 +38,20 @@ type Robot struct {
 }
 
 // METHODS
+// Saldırı fonksiyonu bir yetenek ve hedef parametreleri alıyor
+// yeteneğin gücünü rakip robotun canından çıkarıyor
 func (r *Robot) Attact(skillIndex int, target *Robot) {
 	effect := r.skills[skillIndex].hpEffect
 	target.health += effect
 }
 
+// Her robotun bir id'si var bunu kullanarak da onlara ulaşabiliyoruz
 func GetRobotById(r RobotId, robots map[RobotId]*Robot) *Robot {
 	robot := robots[r]
 	return robot
 }
 
+// Robot oluşturma fonksiyonu
 func CreateRobot(id RobotId, name string, health int, skills [3]Skill) *Robot {
 	newRobot := Robot{
 		id:     id,

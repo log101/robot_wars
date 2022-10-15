@@ -1,3 +1,4 @@
+// Lig yapısı burada tanımlı
 package robot_league
 
 import (
@@ -8,19 +9,25 @@ import (
 )
 
 type Players map[robot.RobotId]*robot.Robot
-type RobotLeague struct {
+type RobotLeague struct { // Robot ligi oyunculardan ve fikstürlerden oluşuyor
 	players Players
 	Matches map[MatchId]*MatchResult
 }
 
 type MatchStatus bool
 
+// Oyun durumda yaptığımız gibi maçın da iki durumu olabilir
+// oynanmış veya oynanmamış, bu bilgiyi ligin bitip bitmediğini
+// tespit etmek için kullanacağız
 const (
 	StatusPlayed    MatchStatus = true
 	StatusNotPlayed MatchStatus = false
 )
 
 type MatchId int
+
+// Maç sonucu takımları, maçın oynanıp oynanmadığı bilgisini
+// ve galibi tutuyor
 type MatchResult struct {
 	teamA  robot.RobotId
 	teamB  robot.RobotId
@@ -81,6 +88,8 @@ func pairingFunction(x, y robot.RobotId) MatchId {
 	return MatchId((robot.RobotId(math.Pow(float64(x), 2)) + (3 * x) + (2 * x * y) + y + robot.RobotId(math.Pow(float64(y), 2))) / 2)
 }
 
+// Ligde oyuncuları birbiriyle eşleştiren metod
+// Herkes birbiriyle bir sefer dövüşüyor
 func (r *RobotLeague) PopulateMatches() error {
 	r.Matches = make(map[MatchId]*MatchResult)
 
@@ -113,6 +122,8 @@ func (r *RobotLeague) PopulateMatches() error {
 	return nil
 }
 
+// Ligin bitip bitmediğini kontrol etmek için
+// maçların durumlarına bakıyoruz
 func (r *RobotLeague) Ended() bool {
 	for _, v := range r.Matches {
 		if v.status == StatusNotPlayed {

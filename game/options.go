@@ -1,3 +1,5 @@
+// Kullanıcıya sorulacak soruların tanımlandığı yer
+// Diyaloglarda diyebiliriz
 package game
 
 import (
@@ -7,32 +9,44 @@ import (
 	league "github.com/robot_wars/game/robot_league"
 )
 
+// Soru/seçenek yapısı
+// Her seçenek bir açıklama ve fonksiyondan oluşuyor
+// Seçenek seçildiği takdirde fonksiyon çalışıyor
+// Geri döndürülen "Oyun Durumu" değişkeni ile oyunumuzun
+// durumunda(state) değişiklik yapabiliyoruz
+// İnteraktif, kullanıcıdan dönüt alınması gereken
+// neredeyse tüm özellikler bu fonksiyon yardımıyla oluşturuldu
 type option struct {
-	operation   func() GameState
-	description string
+	operation   func() GameState // Geri oyun durumu döndüren fonksiyon
+	description string           // Seçeneğin açıklaması
 }
 
+// Kodun okunabilirliğini arttırmak adına
+// bu tarz tip tanımlamalarından çokça yaptım
 type options []option
 
+// Kullanıcıya seçenekler sun
 func askOptions(ops options) GameState {
-	for i, opt := range ops {
+	for i, opt := range ops { // Seçeneklerin açıklamarını ve indekslerini yazdır
 		fmt.Println(i+1, ")", opt.description)
 	}
 
 	var answer int
-	for {
+	for { // Geçerli yanıt alana kadar sor
 		fmt.Print("Please Select an option\n> ")
 		fmt.Scanf("%d", &answer)
 		if (answer > len(ops)) || (answer < 0) {
-			fmt.Println("invalid option")
+			fmt.Println("invalid option") // Geçersiz yanıtları reddet
 		} else {
 			break
 		}
 	}
 
-	return ops[answer-1].operation()
+	return ops[answer-1].operation() // Seçilen seçeneğin fonksiyonunu çalıştır
 }
 
+// Proje niteliklerinde belirtilen yardım mesajını görüntüle
+// seçenek olduğu için tekrar tekrar kullanılabilir
 var displayHelpMessage option = option{
 	operation: func() GameState {
 		fmt.Println(`
@@ -45,6 +59,7 @@ var displayHelpMessage option = option{
 	description: "display help message",
 }
 
+// Ligde bulunan robotların isimlerini, canlarını ve yeteneklerini yazdır
 func generateReport(p league.Players) {
 	for _, v := range p {
 		fmt.Println(
@@ -57,6 +72,7 @@ func generateReport(p league.Players) {
 	}
 }
 
+// Robotlar üzerinde değişlik yap
 func selectRobotsThenConfigure(p league.Players) {
 	for i, v := range p {
 		fmt.Println(i, ")", v.GetName())
@@ -73,6 +89,7 @@ func selectRobotsThenConfigure(p league.Players) {
 	}
 }
 
+// İsim, can ve yetenekler üzerinde değişiklik yap
 func configureRobot(r *robot.Robot) {
 	askOptions(options{
 		option{
@@ -80,7 +97,7 @@ func configureRobot(r *robot.Robot) {
 				fmt.Println("enter a new name")
 
 				var newName string
-				fmt.Scanf("%s", newName)
+				fmt.Scanf("%s", &newName)
 
 				r.SetName(newName)
 				fmt.Println("name successfully changed")
@@ -160,6 +177,7 @@ func configureRobot(r *robot.Robot) {
 	})
 }
 
+// Lige yeni bir robot ekle
 func addRobot(p league.Players) {
 	var (
 		name   string
@@ -169,7 +187,7 @@ func addRobot(p league.Players) {
 	fmt.Println("enter a name for the robot!")
 	fmt.Scanf("%s", &name)
 
-	for i := 0; i < 3; i++ {
+	for i := 0; i < 3; i++ { // 3 tane yetenek seç
 		var selection int
 		fmt.Println("choose a skill from the set")
 		for k, v := range robot.StarterSkills {
@@ -180,8 +198,9 @@ func addRobot(p league.Players) {
 		fmt.Println("skill successfully added")
 	}
 
-	newRobot := robot.CreateRobot(robot.RobotId(len(p)+1), name, 100, skills)
+	newRobot := robot.CreateRobot(robot.RobotId(len(p)+1), name, 100, skills) // Seçilen robotu oluştur
 	p[newRobot.GetId()] = newRobot
 
+	// Robot oluşturulduktan sonra olumlu geribildirimde bulun
 	fmt.Println("robot", newRobot.GetName(), "successfully created")
 }
